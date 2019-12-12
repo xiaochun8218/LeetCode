@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 
+//≤Â»Î≈≈–Ú
 void insertSort(int arr[], int len)
 {
     for (int i = 1; i < len; i++)
@@ -16,6 +17,7 @@ void insertSort(int arr[], int len)
     }
 }
 
+//√∞≈›≈≈–Ú
 void bubbleSort(int arr[], int len)
 {
     for (int i = 0; i < len; i++)
@@ -24,7 +26,7 @@ void bubbleSort(int arr[], int len)
         {
             int temp = arr[j];
             arr[j] = arr[j + 1];
-            arr[j + 1] = temp;
+			arr[j + 1] = temp;
         }
     }
 }
