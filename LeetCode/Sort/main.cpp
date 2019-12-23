@@ -104,15 +104,18 @@ void heapSort(int arr[], int len)
 //冒泡排序
 void bubbleSort(int arr[], int len)
 {
-	for (int i = 0; i < len; i++)
+    bool bHasChange = true;
+	for (int i = 0; i < len -1 && bHasChange; i++)
 	{
-		for (int j = 0; j < len - i; j++)
+        bHasChange = false;
+		for (int j = 0; j < len - 1 - i; j++)
 		{
 			if (arr[j] > arr[j+1])
 			{
 				int temp = arr[j];
 				arr[j] = arr[j + 1];
 				arr[j + 1] = temp;
+                bHasChange = true;
 			}
 		}
 	}
