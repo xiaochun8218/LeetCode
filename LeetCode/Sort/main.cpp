@@ -288,17 +288,7 @@ void insertNode(ListNode *head, int val)
 ListNode* mergeList(ListNode *headOne, ListNode *headTwo)
 {
 	ListNode *tmp = new ListNode(0);
-
-	if (!headOne->next)
-	{
-		tmp = headTwo;
-		return tmp;
-	}
-	if (!headTwo->next)
-	{
-		tmp = headOne;
-		return tmp;
-	}
+    ListNode * r = tmp;
 
 	ListNode *p = headOne->next;
 	ListNode *q = headTwo->next;
