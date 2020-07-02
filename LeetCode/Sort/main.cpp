@@ -203,6 +203,7 @@ void mergePass(int arr[], int len, int length)
 	int i;
 	for (i = 0; i + 2 * length - 1 < len; i = i + 2 * length)
 	{
+        //相邻的两个子序列，排序合并
 		merge(arr, i, i + length - 1, i + 2*length -1);
 	}
 
@@ -235,17 +236,18 @@ void countSort(int arr[], int len)
 		countArr[arr[i]]++;
 	}
 
+    //前后计数相加，得到下标，后面会取相应key的下标
 	for (int key = 0; key < 100; key++)
 	{
 		countArr[key] += countArr[key - 1];
 	}
 
 	for (int i = len - 1; i >= 0; i--)
-	{
+	{//倒着循环，保证算法是稳定的（相同的key，排序后相对位置不变）
 		int key = arr[i];
 		int pos = countArr[key] - 1;
 		sortArr[pos] = key;
-		countArr[key]--;
+		countArr[key]--; //可能会有相同的key，所以取过一次下标之后，相应的下标值要减1
 	}
 
 	for (int i = 0; i < len; i++)
@@ -288,11 +290,10 @@ void insertNode(ListNode *head, int val)
 ListNode* mergeList(ListNode *headOne, ListNode *headTwo)
 {
 	ListNode *tmp = new ListNode(0);
-    ListNode * r = tmp;
+    ListNode *r = tmp;
 
 	ListNode *p = headOne->next;
 	ListNode *q = headTwo->next;
-	ListNode *r = tmp;
 	while (p && q)
 	{
 		if (p->data <= q->data)
@@ -394,7 +395,9 @@ void countSortByExp(int arr[], int len, int exp)
 
 void radixSort(int arr[], int len)
 {
+    //获取最大的值
 	int maxElem = getMaxElem(arr, len);
+    //按位（个位、十位、百位...）进行计数排序
 	for (int exp = 1; maxElem / exp > 0; exp = exp * 10)
 	{
 		countSortByExp(arr, len, exp);

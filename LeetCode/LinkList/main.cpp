@@ -64,13 +64,13 @@ Node * partion(Node * begin, Node * end)
     {
         if (j->data < key)
         {
-            //(i,j)区间的节点的data都是大于等于key的
-            i = i->next;
-            swap(i->data, j->data);
+                                    // (i,j)区间的节点的data都是大于key的
+            i = i->next;            // i要先往后移一位，保证换到右边的是比key大的值
+            swap(i->data, j->data); // 换完之后，i的值是比key小的
         }
         j = j->next;
     }
-    swap(i->data, begin->data);
+    swap(i->data, begin->data); // 确定了key的位置i
 
     return i;
 }
@@ -151,6 +151,8 @@ void delNodeVal(Node* head, int val)
 {
     if ( head == nullptr || head->next == nullptr )
         return;
+
+    /*
     Node * pre = head;
     Node * p = head->next;
     while (p)
@@ -164,6 +166,23 @@ void delNodeVal(Node* head, int val)
         {
             pre->next = p->next;
             free(p);
+        }
+    }
+    */
+    Node * p = head->next;
+    while (p)
+    {
+        if (p->data != val)
+        {
+            p = p->next;
+        }
+        else
+        {
+            Node * tmp = p->next;
+            p->data = tmp->data;
+            p->next = tmp->next;
+            free(tmp);
+            break;
         }
     }
 }
@@ -187,9 +206,11 @@ void delNodePos(Node * head, Node * pos)
     }
     else
     {
-        swap(pos->data, pos->next->data);
-        pos->next = pos->next->next;
-        free(pos->next);
+        Node * tmp = pos->next;
+        //swap(pos->data, pos->next->data);
+        pos->data = tmp->data;
+        pos->next = tmp->next;
+        free(tmp);
     }
 }
 

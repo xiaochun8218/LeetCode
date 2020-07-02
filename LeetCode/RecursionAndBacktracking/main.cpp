@@ -35,6 +35,7 @@ bool check(int row, int col, int solution[])
 
 void backtracking(int n, int row, int solution[])
 {
+    //递归出口
 	if (row == n)
 	{
 		nCount++;
@@ -43,13 +44,16 @@ void backtracking(int n, int row, int solution[])
 
 	for (int col = 0; col < n; col++)
 	{
+        //遍历所有可能性
 		solution[row] = col;
 
+        //递归
 		if (check(row, col, solution))
 		{
 			backtracking(n, row + 1, solution);
 		}
 
+        //回溯
 		solution[row] = -1;
 	}
 }

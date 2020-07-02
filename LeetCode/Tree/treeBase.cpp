@@ -131,13 +131,14 @@ void BiTree::post_order_non_rec()
         cur = S.top();
         if ( (cur->left == nullptr && cur->right == nullptr)
             || (pre && (pre == cur->left || pre == cur->right)) )
-        {
+        {//当前节点没有左右子树，或者左右子树均已输出
             cout << cur->data << endl;
             pre = cur;
             S.pop();
         }
         else
         {
+            //先进后出，先压栈右子树
             if (cur->right)
             {
                 S.push(cur->right);
