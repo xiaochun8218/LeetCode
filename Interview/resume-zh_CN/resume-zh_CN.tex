@@ -1,0 +1,132 @@
+% !TEX TS-program = xelatex
+% !TEX encoding = UTF-8 Unicode
+% !Mode:: "TeX:UTF-8"
+
+\documentclass{resume}
+\usepackage{zh_CN-Adobefonts_external} % Simplified Chinese Support using external fonts (./fonts/zh_CN-Adobe/)
+% \usepackage{NotoSansSC_external}
+% \usepackage{NotoSerifCJKsc_external}
+% \usepackage{zh_CN-Adobefonts_internal} % Simplified Chinese Support using system fonts
+\usepackage{linespacing_fix} % disable extra space before next section
+\usepackage{cite}
+
+\begin{document}
+\pagenumbering{gobble} % suppress displaying page number
+
+\name{肖纯}
+
+\basicInfo{
+  \email{paulxiao@163.com} \textperiodcentered\ 
+  \phone{(+86) 132-0713-4391} \textperiodcentered\ 
+  \github[github.com/xiaochun8218]{https://github.com/xiaochun8218} }
+ 
+\section{教育经历}
+\begin{spacing}{1.2}%%行间距变为1.5倍
+\datedsubsection{\textbf{武汉大学}}{2017 -- 2019}
+\textit{硕士(非全日制)}\ \ 计算机技术
+\datedsubsection{\textbf{湖北大学}}{2011 -- 2015}
+\textit{学士}\ \ 计算机科学与技术
+\end{spacing}
+
+\section{专业技能}
+\begin{spacing}{1.5}%%行间距变为1.5倍
+\begin{itemize}
+        \item 熟悉C、C++11编程
+        \item 熟悉常见数据结构和算法
+        \item 熟悉网络编程和多线程编程
+        \item 熟悉Linux、Shell编程
+        \item 熟悉运用MySQL数据库
+        \item 熟悉分布式微服务
+        \end{itemize}
+\end{spacing}
+        
+\section{工作经历}
+\datedsubsection{\textbf{优品财富管理股份有限公司}}{2015年7月 -- 至今}
+\begin{spacing}{1.5}%%行间距变为1.5倍
+\textit{职位}\ \ {C++开发工程师}\\
+\textit{职责}
+\begin{itemize}
+        \item 基于微服务框架TAF，设计重构股票技术指标系统
+        \item 设计优化缓存策略，提高相关服务的性能，保证服务的高可用性
+        \item 对C端和B端指标公式选股业务提供数据支撑
+        \end{itemize}
+\end{spacing}
+
+
+\section{项目经历}
+
+\datedsubsection{\textbf{指标系统}}{2015年7月 -- 至今}
+\begin{spacing}{1.5}%%行间距变为1.5倍
+\textit{项目描述}\ \ 指标系统是集股票技术指标公式编辑、上传、计算、回测和应用于一体的综合系统\\
+\textit{工作内容}
+\begin{itemize}
+        \item 重构原指标系统
+            \begin{itemize}
+                \item 基于微服务框架TAF，对原指标系统进行重构和微服务拆分，将复用的业务拆分成独立的微服务，进行分布式部署
+            \end{itemize}
+        \item 设计优化服务缓存策略，避免缓存穿透、并发竞争、缓存雪崩
+            \begin{itemize}
+                \item MySQL数据库主从部署，读写分离
+                \item 缓存时间加入随机时间，避免缓存瞬时失效过多
+                \item 缓存非法key请求，避免非法key一直查询DB
+                \item 缓存添加loading状态，处于loading状态的缓存，请求异步回包，避免缓存过期时并发请求全部查询DB
+                \item 监控服务运行状态，通过及时扩容部署，关闭服务异常接口、边缘功能，确保服务核心功能正常运行
+            \end{itemize}
+        \end{itemize}
+\textit{工作成绩}
+\begin{itemize}
+        \item 缩短了指标选股业务开发、测试和上线的周期
+        \item 降低了服务接口平均耗时，tps由500提升到7000
+        \item 保证了系统的高可用性
+        \end{itemize}
+\end{spacing}
+        
+\datedsubsection{\textbf{指标主站}}{2019年3月 -- 至今}
+\begin{spacing}{1.5}%%行间距变为1.5倍
+\textit{项目描述}\ \ 指标主站是接收上游服务原始指标信号推送，并支持下游服务分类订阅相关业务数据的调度中心\\
+\textit{工作内容}
+\begin{itemize}
+        \item 设计优化B端部署方案
+            \begin{itemize}
+                \item 设计开发数据查询、订阅接口的级联功能，减少依赖服务和数据的部署
+            \end{itemize}
+        \item 降低服务内存占用
+            \begin{itemize}
+                \item 采用1字节对齐、缓存序列化之后的数据、lz4压缩算法等，降低缓存数据大小
+            \end{itemize}
+        \end{itemize}
+\textit{工作成绩}
+\begin{itemize}
+        \item 减少了B端券商落地部署服务所需资源，服务器由6台减少至2台
+        \item 降低了内存占用大小，由8G降至2.6G
+        \end{itemize}
+\end{spacing}
+
+\datedsubsection{\textbf{关联规则选股}}{2018年8月 -- 2019年5月}
+\begin{spacing}{1.5}%%行间距变为1.5倍
+\textit{项目描述}\ \ 挖掘成交量和股价趋势之间的时序关联规则进行选股\\
+\textit{工作内容}
+\begin{itemize}
+        \item 提高选股结果回测胜率
+        \begin{itemize}
+                \item 设计一个基于交易日跨度、成交量和资金流向的股票趋势模式
+            \end{itemize}
+        \item 优化关联规则挖掘算法FP-growth
+        \begin{itemize}
+                \item 采用缓存频繁项两两同时出现的频度计数
+            \end{itemize}
+        \end{itemize}
+\textit{工作成绩}
+\begin{itemize}
+        \item 引入Level2资金流向指标，选股结果回测胜率由75\%提升至83\%
+        \item 提高了挖掘的效率，在递归生成条件FP-tree时，减少了1次对前缀路径集的扫描
+        \end{itemize}
+\end{spacing}
+
+\iffalse
+\section{\faHeartO\ 获奖情况}
+\datedline{\textit{第一名}, xxx 比赛}{2013 年6 月}
+\datedline{其他奖项}{2015}
+\fi
+
+\end{document}
