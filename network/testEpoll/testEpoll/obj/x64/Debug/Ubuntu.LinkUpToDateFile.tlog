@@ -1,0 +1,1 @@
+g++ -o "/mnt/d/Work/eastmoney/code/testEpoll/testEpoll/bin/x64/Debug/testEpoll.out" -Wl,--no-undefined -Wl,-z,relro -Wl,-z,now -Wl,-z,noexecstack /mnt/d/Work/eastmoney/code/testEpoll/testEpoll/obj/x64/Debug/main.o
