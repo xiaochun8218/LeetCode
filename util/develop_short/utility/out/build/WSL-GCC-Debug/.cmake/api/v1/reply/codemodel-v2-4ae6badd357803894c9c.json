@@ -1,0 +1,68 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.8"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "utility",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "utility::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-utility-Debug-1341ed897bce8aac9fa7.json",
+					"name" : "utility",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "utility_test::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-utility_test-Debug-5326860202c33c1b32c2.json",
+					"name" : "utility_test",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/mnt/d/学习资料/MyGit/ALL/util/develop_short/utility/out/build/WSL-GCC-Debug",
+		"source" : "/mnt/d/学习资料/MyGit/ALL/util/develop_short/utility"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 0
+	}
+}
